@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="week12-4_keyboard_mouse" />
+		<Option title="Final_Project" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -31,7 +31,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/Users/Administrator/Desktop/freeglut/include" />
+			<Add directory="freeglut/include" />
 		</Compiler>
 		<Linker>
 			<Add library="glut32" />
@@ -39,7 +39,7 @@
 			<Add library="glu32" />
 			<Add library="winmm" />
 			<Add library="gdi32" />
-			<Add directory="C:/Users/Administrator/Desktop/freeglut/lib" />
+			<Add directory="freeglut/lib" />
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Extensions>

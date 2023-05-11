@@ -35,7 +35,7 @@ int main(int argc,char** argv)
 {
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_DEPTH);
-    glutCreateWindow("week12");
+    glutCreateWindow("week13");
 
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
