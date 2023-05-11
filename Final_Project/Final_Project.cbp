@@ -41,6 +41,7 @@
 			<Add library="gdi32" />
 			<Add directory="freeglut/lib" />
 		</Linker>
+		<Unit filename="glm.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
