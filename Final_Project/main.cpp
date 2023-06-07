@@ -245,7 +245,6 @@ void display() {
             glPopMatrix();
             glPushMatrix();
             glBindTexture(GL_TEXTURE_2D , tex4);
-            glBindTexture(GL_TEXTURE_2D , tex1);
                 glmDraw(face, GLM_SMOOTH|GLM_TEXTURE);
             glPopMatrix();
             glPopMatrix();
