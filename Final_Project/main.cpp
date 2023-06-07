@@ -98,8 +98,8 @@ void mouse(int button, int state, int x, int y) {
     oldY = y;
 }
 void motion(int x, int y) {
-    teapotX += (x - oldX) / 150.0 * 10; ///teapotX = (x-150)/150.0;
-    teapotY += (oldY - y) / 150.0 * 10; ///teapotY = (150-y)/150.0;
+    teapotX += (x - oldX) / 150.0 ; ///teapotX = (x-150)/150.0;
+    teapotY += (oldY - y) / 150.0 ; ///teapotY = (150-y)/150.0;
     angle[ID] += x - oldX;
     angle2[ID] += oldY - y;
     oldX = x;
@@ -119,25 +119,24 @@ void display() {
             glmDraw(body, GLM_MATERIAL|GLM_TEXTURE);///glmDraw(gundam, GLM_MATERIAL|GLM_TEXTURE);
 
             glPushMatrix();///左手
-                glTranslatef(teapotX, teapotY, 0);
-                //glTranslatef(-4.07, +21.33, 0 );
+                //glTranslatef(-0.20, 1.23, 0 );
                 //glRotatef(angle[1], 0, 1, 0);
                 //glRotatef(angle2[1], 1, 0, 0);
-                //glTranslatef( 4.07, -21.33, 0 );///glTranslatef(teapotX, teapotY, 0);
+                //glTranslatef( 0.20, -1.23, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(arm1, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();///左手
-                //glTranslatef(-4.07, +21.33, 0 );
+                //glTranslatef( -0.33, 1.22, 0 );
                 //glRotatef(angle[2], 0, 1, 0);
                 //glRotatef(angle2[2], 1, 0, 0);
-                //glTranslatef( 4.07, -21.33, 0 );///glTranslatef(teapotX, teapotY, 0);
+                //glTranslatef( 0.33, -1.22, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(arm11, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();
-                    //glTranslatef(-4.40, +18.53, 0 );
+                    //glTranslatef(-0.57, +1.21, 0 );
                     //glRotatef(angle[3], 0, 1, 0);
                     //glRotatef(angle2[3], 1, 0, 0);
-                    //glTranslatef( 4.40, -18.53, 0 );///glTranslatef(teapotX, teapotY, 0);
+                    //glTranslatef( 0.57, -1.21, 0 );///glTranslatef(teapotX, teapotY, 0);
                     glmDraw(hand1, GLM_MATERIAL|GLM_TEXTURE);
                     glPopMatrix();
                 glPopMatrix();
@@ -145,10 +144,11 @@ void display() {
 
 
             glPushMatrix();///右手
-                //glTranslatef(+4.07, +21.33, 0 );
-                //glRotatef(angle[4], 0, 1, 0);
-                //glRotatef(angle2[4], 1, 0, 0);
-                //glTranslatef(-4.07, -21.33, 0 );///glTranslatef(teapotX, teapotY, 0);
+            //glTranslatef(teapotX, teapotY, 0);
+                glTranslatef( 0.16, 1.23, 0 );
+                glRotatef(angle[4], 0, 1, 0);
+                glRotatef(angle2[4], 1, 0, 0);
+                glTranslatef( -0.16, -1.23, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(arm2, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();///左手
