@@ -6,7 +6,7 @@
 #include "glm.h"
 #include "CMP3_MCI.h"
 CMP3_MCI myMP3;
-GLMmodel * head = NULL;
+GLMmodel * head = NULL,* hair = NULL,* face = NULL;
 GLMmodel * body = NULL; ///GLMmodel * gundam = NULL;
 GLMmodel * arm1 = NULL, * arm11 = NULL, * arm2 = NULL, * arm22 = NULL;
 GLMmodel * hand1 = NULL, * hand2 = NULL;
@@ -150,6 +150,7 @@ void display() {
     glPushMatrix();
         {
         glBindTexture(GL_TEXTURE_2D, tex5);///­I´º
+        glTranslatef(0,0,0.4);
 
         glBegin(GL_POLYGON);
         glTexCoord2f(0.0, 0.0); glVertex2f(-1.0, 1.0); // ¥ª¤U¨¤
@@ -220,12 +221,18 @@ void display() {
                 glPopMatrix();
             glPopMatrix();
 
-            glPushMatrix();
+            glPushMatrix();///ÀY
                 glTranslatef( 0.00, 1.33, 0 );
                 glRotatef(angle[7], 0, 1, 0);
                 glRotatef(angle2[7], 0, 0, 1);
                 glTranslatef( -0.00, -1.33, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(head, GLM_MATERIAL|GLM_TEXTURE);
+                glPushMatrix();
+                glmDraw(hair, GLM_MATERIAL|GLM_TEXTURE);
+            glPopMatrix();
+            glPushMatrix();
+                glmDraw(face, GLM_MATERIAL|GLM_TEXTURE);
+            glPopMatrix();
             glPopMatrix();
 
 
@@ -324,6 +331,8 @@ int main(int argc, char** argv)
     leg22 = glmReadOBJ("model/leg22.obj");
     foot1 = glmReadOBJ("model/foot1.obj");
     foot2 = glmReadOBJ("model/foot2.obj");
+    hair = glmReadOBJ("model/hair.obj");
+    face = glmReadOBJ("model/face.obj");
     tex5 = myTexture("tex5.jpg");
 
 
