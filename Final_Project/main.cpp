@@ -168,10 +168,9 @@ void display() {
             glPopMatrix();
 
             glPushMatrix();
-            //glTranslatef(teapotX, teapotY, 0);
                 glTranslatef( 0.00, 1.33, 0 );
                 glRotatef(angle[7], 0, 1, 0);
-                glRotatef(angle2[7], 1, 0, 0);
+                glRotatef(angle2[7], 0, 0, 1);
                 glTranslatef( -0.00, -1.33, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(head, GLM_MATERIAL|GLM_TEXTURE);
             glPopMatrix();
@@ -181,24 +180,25 @@ void display() {
                 glmDraw(body, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();
-                    //glTranslatef(-2.00, +14.27, 0 );
-                    //glRotatef(angle[8], 0, 1, 0);
-                    //glRotatef(angle2[8], 1, 0, 0);
-                    //glTranslatef( 2.00, -14.27, 0 );///glTranslatef(teapotX, teapotY, 0);
+                    glTranslatef(-0.06, 0.74, 0 );
+                    glRotatef(angle[8], 0, 1, 0);
+                    glRotatef(angle2[8], 0, 0, 1);
+                    glTranslatef( 0.06, -0.74, 0 );///glTranslatef(teapotX, teapotY, 0);
                     glmDraw(leg1, GLM_MATERIAL|GLM_TEXTURE);
 
                     glPushMatrix();
-                        //glTranslatef(-2.00, +9.87, 0 );
-                        //glRotatef(angle[9], 0, 1, 0);
-                        //glRotatef(angle2[9], 1, 0, 0);
-                        //glTranslatef( 2.00, -9.87, 0 );///glTranslatef(teapotX, teapotY, 0);
+                        glTranslatef( -0.05, 0.48, 0 );
+                        glRotatef(angle[9], 0, 1, 0);
+                        glRotatef(angle2[9], 0, 0, 1);
+                        glTranslatef( 0.05, -0.48, 0 );///glTranslatef(teapotX, teapotY, 0);
                         glmDraw(leg11, GLM_MATERIAL|GLM_TEXTURE);
 
                         glPushMatrix();
-                            //glTranslatef(-2.13, +2.40, 0 );
-                            //glRotatef(angle[10], 0, 1, 0);
-                            //glRotatef(angle2[10], 1, 0, 0);
-                            //glTranslatef( 2.13, -2.40, 0 );///glTranslatef(teapotX, teapotY, 0);
+                        //glTranslatef(teapotX, teapotY, 0);
+                        glTranslatef( -0.05, 0.08, 0 );
+                        glRotatef(angle[10], 0, 1, 0);
+                        glRotatef(angle2[10], 1, 0,0 );
+                        glTranslatef( 0.05, -0.08, 0 );///glTranslatef(teapotX, teapotY, 0);
                             glmDraw(foot1, GLM_MATERIAL|GLM_TEXTURE);
                         glPopMatrix();
                     glPopMatrix();
