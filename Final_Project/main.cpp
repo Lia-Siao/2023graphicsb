@@ -1,14 +1,18 @@
+#include <windows.h>
 #include <opencv/highgui.h> ///使用 OpenCV 2.1 比較簡單, 只要用 High GUI 即可
 #include <opencv/cv.h>
 #include <stdio.h>
 #include <GL/glut.h>
 #include "glm.h"
+#include "CMP3_MCI.h"
+CMP3_MCI myMP3;
 GLMmodel * head = NULL;
 GLMmodel * body = NULL; ///GLMmodel * gundam = NULL;
 GLMmodel * arm1 = NULL, * arm11 = NULL, * arm2 = NULL, * arm22 = NULL;
 GLMmodel * hand1 = NULL, * hand2 = NULL;
 GLMmodel * leg1 = NULL, * leg2 = NULL,* leg11 = NULL,* leg22 = NULL;
 GLMmodel * foot1 = NULL, * foot2 = NULL;
+GLuint tex5;
 
 float teapotX = 0, teapotY = 0, oldX = 0, oldY = 0;
 float angle[20] = {}, angle2[20] = {};///float angle = 0, angle2 = 0;
@@ -17,6 +21,37 @@ float OldAngle[20] = {}, OldAngle2[20] = {};
 int ID = 0;
 FILE * fout = NULL;
 FILE * fin = NULL;
+
+const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
+const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat light_position[] = { 2.0f, 5.0f, -5.0f, 0.0f };
+
+const GLfloat mat_ambient[]    = { 0.7f, 0.7f, 0.7f, 1.0f };
+const GLfloat mat_diffuse[]    = { 0.8f, 0.8f, 0.8f, 1.0f };
+const GLfloat mat_specular[]   = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat high_shininess[] = { 100.0f };
+
+void myLight()
+{
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+
+    glEnable(GL_LIGHT0);
+    glEnable(GL_NORMALIZE);
+    glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_LIGHTING);
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT,  light_ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE,  light_diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT,   mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE,   mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR,  mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+}
 
 void timer(int t) {
     printf("現在timer(%d)\n", t);
@@ -109,11 +144,29 @@ void motion(int x, int y) {
 }
 void display() {
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_LIGHTING);
+
+
+    glPushMatrix();
+        {
+        glBindTexture(GL_TEXTURE_2D, tex5);///背景
+
+        glBegin(GL_POLYGON);
+        glTexCoord2f(0.0, 0.0); glVertex2f(-1.0, 1.0); // 左下角
+        glTexCoord2f(0.0, 1.0); glVertex2f(-1.0, -1.0); // 右下角
+        glTexCoord2f(1.0, 1.0); glVertex2f(1.0, -1.0); // 右上角
+        glTexCoord2f(1.0, 0.0); glVertex2f(1.0, 1.0); // 左上角
+        glEnd();
+        }
+        glEnable(GL_LIGHTING);
+       glPopMatrix();
+        //glBindTexture(GL_TEXTURE_2D , tex2);//果肉
+
     glPushMatrix();
         glScalef(1.6, 1.6, 1.6);
         glTranslatef(0, -0.6, 0);///往下一半
         glPushMatrix();
-            glColor3f(1,1,1);
+            ///glColor3f(1,1,1);
             glScalef(0.7, 0.7, 0.7);
             //glRotatef(angle[0], 0, 1, 0); ///身體的轉動
             glmDraw(body, GLM_MATERIAL|GLM_TEXTURE);///glmDraw(gundam, GLM_MATERIAL|GLM_TEXTURE);
@@ -236,7 +289,7 @@ void display() {
         glPopMatrix();
 
 
-        glColor3f(0,1,0);
+        ///glColor3f(0,1,0);
         glutSolidTeapot( 0.02 );
 
     glPopMatrix();
@@ -245,6 +298,7 @@ void display() {
 
 int main(int argc, char** argv)
 {
+    myMP3.Load("backgroundmusic.mp3");
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_DEPTH);
     glutInitWindowSize(500,500);
@@ -254,6 +308,7 @@ int main(int argc, char** argv)
     glutMotionFunc(motion);
     glutMouseFunc(mouse);
     glutKeyboardFunc(keyboard);
+    myLight();
 
     head = glmReadOBJ("model/head.obj");
     body = glmReadOBJ("model/body.obj"); ///gundam = glmReadOBJ("model/Gundam.obj");
@@ -269,6 +324,7 @@ int main(int argc, char** argv)
     leg22 = glmReadOBJ("model/leg22.obj");
     foot1 = glmReadOBJ("model/foot1.obj");
     foot2 = glmReadOBJ("model/foot2.obj");
+    tex5 = myTexture("tex5.jpg");
 
 
     glEnable(GL_DEPTH_TEST);
