@@ -179,7 +179,7 @@ void display() {
 
             glPushMatrix();///¥ª¤â
                 glBindTexture(GL_TEXTURE_2D , tex2);
-                glTranslatef(-0.20, 1.23, 0 );
+                glTranslatef(-0.13, 1.23, 0 );
                 glRotatef(angle[1], 0, 1, 0);
                 glRotatef(angle2[1], 0, 0, 1);
                 glTranslatef( 0.20, -1.23, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -187,7 +187,7 @@ void display() {
 
                 glPushMatrix();///¥ª¤â
                 glBindTexture(GL_TEXTURE_2D , tex2);
-                glTranslatef( -0.33, 1.22, 0 );
+                glTranslatef( -0.31, 1.22, 0 );
                 glRotatef(angle[2], 0, 1, 0);
                 glRotatef(angle2[2], 0, 0, 1);
                 glTranslatef( 0.33, -1.22, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -195,7 +195,7 @@ void display() {
 
                 glPushMatrix();
                 glBindTexture(GL_TEXTURE_2D , tex1);
-                    glTranslatef(-0.57, +1.21, 0 );
+                    glTranslatef(-0.53, +1.21, 0 );
                     glRotatef(angle[3], 0, 1, 0);
                     glRotatef(angle2[3], 0, 0, 1);
                     glTranslatef( 0.57, -1.21, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -207,7 +207,7 @@ void display() {
 
             glPushMatrix();///¥k¤â
                 glBindTexture(GL_TEXTURE_2D , tex2);
-                glTranslatef( 0.16, 1.23, 0 );
+                glTranslatef( 0.11, 1.23, 0 );
                 glRotatef(angle[4], 0, 1, 0);
                 glRotatef(angle2[4], 0, 0, 1);
                 glTranslatef( -0.16, -1.23, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -215,7 +215,7 @@ void display() {
 
                 glPushMatrix();
                 glBindTexture(GL_TEXTURE_2D , tex2);
-                glTranslatef( 0.32, 1.21, 0 );
+                glTranslatef( 0.30, 1.21, 0 );
                 glRotatef(angle[5], 0, 1, 0);
                 glRotatef(angle2[5], 0, 0, 1);
                 glTranslatef( -0.32, -1.21, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -223,7 +223,7 @@ void display() {
 
                 glPushMatrix();
                 glBindTexture(GL_TEXTURE_2D , tex1);
-                    glTranslatef( 0.56, 1.21, 0 );
+                    glTranslatef( 0.53, 1.21, 0 );
                     glRotatef(angle[6], 0, 1, 0);
                     glRotatef(angle2[6], 0, 0, 1);
                     glTranslatef( -0.56, -1.21, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -240,7 +240,7 @@ void display() {
                 glTranslatef( -0.00, -1.33, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(head, GLM_SMOOTH|GLM_TEXTURE);
                 glPushMatrix();
-                glBindTexture(GL_TEXTURE_2D , tex2);
+                glBindTexture(GL_TEXTURE_2D , tex7);
                 glmDraw(hair, GLM_SMOOTH|GLM_TEXTURE);
             glPopMatrix();
             glPushMatrix();
@@ -255,7 +255,7 @@ void display() {
 
                 glPushMatrix();
                 glBindTexture(GL_TEXTURE_2D , tex6);
-                    glTranslatef(-0.06, 0.74, 0 );
+                    glTranslatef(-0.06, 0.84, 0 );
                     glRotatef(angle[8], 0, 1, 0);
                     glRotatef(angle2[8], 0, 0, 1);
                     glTranslatef( 0.06, -0.74, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -263,7 +263,7 @@ void display() {
 
                     glPushMatrix();
                     glBindTexture(GL_TEXTURE_2D , tex6);
-                        glTranslatef( -0.05, 0.48, 0 );
+                        glTranslatef( -0.05, 0.53, 0 );
                         glRotatef(angle[9], 0, 1, 0);
                         glRotatef(angle2[9], 0, 0, 1);
                         glTranslatef( 0.05, -0.48, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -271,8 +271,7 @@ void display() {
 
                         glPushMatrix();
                         glBindTexture(GL_TEXTURE_2D , tex1);
-                        glTranslatef( -0.05, 0.08, 0 );
-                        glRotatef(angle[10], 0, 1, 0);
+                        glTranslatef( -0.05, 0.12, 0 );
                         glRotatef(angle2[10], 1, 0,0 );
                         glTranslatef( 0.05, -0.08, 0 );///glTranslatef(teapotX, teapotY, 0);
                         glmDraw(foot1, GLM_SMOOTH|GLM_TEXTURE);
@@ -286,7 +285,7 @@ void display() {
 
                 glPushMatrix();
                 glBindTexture(GL_TEXTURE_2D , tex6);
-                    glTranslatef( 0.05, 0.77, 0 );
+                    glTranslatef( 0.05, 0.87, 0 );
                     glRotatef(angle[11], 0, 1, 0);
                     glRotatef(angle2[11], 1, 0, 0);
                     glTranslatef( -0.05, -0.77, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -294,7 +293,7 @@ void display() {
 
                     glPushMatrix();
                     glBindTexture(GL_TEXTURE_2D , tex6);
-                        glTranslatef( 0.05, 0.48, 0 );
+                        glTranslatef( 0.05, 0.53, 0 );
                         glRotatef(angle[12], 0, 1, 0);
                         glRotatef(angle2[12], 1, 0, 0);
                         glTranslatef( -0.05, -0.48, 0 );///glTranslatef(teapotX, teapotY, 0);
@@ -303,8 +302,7 @@ void display() {
                         glPushMatrix();
                         //glTranslatef(teapotX, teapotY, 0);
                             glBindTexture(GL_TEXTURE_2D , tex1);
-                            glTranslatef( 0.05, 0.07, 0 );
-                            glRotatef(angle[13], 0, 1, 0);
+                            glTranslatef( 0.05, 0.11, 0 );
                             glRotatef(angle2[13], 1, 0, 0);
                             glTranslatef( -0.05, -0.07, 0 );///glTranslatef(teapotX, teapotY, 0);
                             glmDraw(foot2, GLM_SMOOTH|GLM_TEXTURE);
@@ -360,6 +358,7 @@ int main(int argc, char** argv)
     tex3 = myTexture("model/tEXTURE/COLORS.jpg");
     tex4 = myTexture("model/tEXTURE/FACE Base Color apha.png");
     tex6 = myTexture("model/tEXTURE/bot color.jpg");
+    tex7 = myTexture("model/tEXTURE/coffee.png");
 
     glEnable(GL_DEPTH_TEST);
 
