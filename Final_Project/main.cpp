@@ -11,9 +11,9 @@ GLMmodel * leg1 = NULL, * leg2 = NULL,* leg11 = NULL,* leg22 = NULL;
 GLMmodel * foot1 = NULL, * foot2 = NULL;
 
 float teapotX = 0, teapotY = 0, oldX = 0, oldY = 0;
-float angle[20] = {}, angle2[20] = {} ,angle3[20] = {};;///float angle = 0, angle2 = 0;
-float NewAngle[20] = {}, NewAngle2[20] = {} ,NewAngle3[20] = {};
-float OldAngle[20] = {}, OldAngle2[20] = {}, OldAngle3[20] = {};
+float angle[20] = {}, angle2[20] = {};///float angle = 0, angle2 = 0;
+float NewAngle[20] = {}, NewAngle2[20] = {};
+float OldAngle[20] = {}, OldAngle2[20] = {};
 int ID = 0;
 FILE * fout = NULL;
 FILE * fin = NULL;
@@ -29,16 +29,13 @@ void timer(int t) {
         for(int i=0; i<20; i++){
             OldAngle[i] = NewAngle[i];
             OldAngle2[i] = NewAngle2[i];
-            OldAngle3[i] = NewAngle3[i];
             fscanf(fin, "%f", &NewAngle[i] );
             fscanf(fin, "%f", &NewAngle2[i] );
-            fscanf(fin, "%f", &NewAngle3[i] );
         }
     }
     for(int i=0; i<20; i++){
         angle[i] = NewAngle[i] * alpha + OldAngle[i] * (1-alpha);
         angle2[i] = NewAngle2[i] * alpha + OldAngle2[i] * (1-alpha);
-        angle3[i] = NewAngle3[i] * alpha + OldAngle3[i] * (1-alpha);
     }
 
     glutPostRedisplay();
@@ -64,7 +61,6 @@ void keyboard(unsigned char key, int x, int y) {
         for(int i=0; i<20; i++){
             fprintf(fout, "%.2f ", angle[i] );
             fprintf(fout, "%.2f ", angle2[i] );
-            fprintf(fout, "%.2f ", angle3[i] );
         }
         fprintf(fout, "\n");
         printf("寫了一行\n");
@@ -73,7 +69,6 @@ void keyboard(unsigned char key, int x, int y) {
         if(fin == NULL) fin = fopen("motion.txt", "r");
         for(int i=0; i<20; i++){
             fscanf(fin, "%f", &angle[i] );
-            fscanf(fin, "%f", &angle2[i] );
             fscanf(fin, "%f", &angle2[i] );
         }
         glutPostRedisplay();
@@ -126,21 +121,21 @@ void display() {
             glPushMatrix();///左手
                 glTranslatef(-0.20, 1.23, 0 );
                 glRotatef(angle[1], 0, 1, 0);
-                glRotatef(angle2[1], 1, 0, 0);
+                glRotatef(angle2[1], 0, 0, 1);
                 glTranslatef( 0.20, -1.23, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(arm1, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();///左手
                 glTranslatef( -0.33, 1.22, 0 );
                 glRotatef(angle[2], 0, 1, 0);
-                glRotatef(angle2[2], 1, 0, 0);
+                glRotatef(angle2[2], 0, 0, 1);
                 glTranslatef( 0.33, -1.22, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(arm11, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();
                     glTranslatef(-0.57, +1.21, 0 );
                     glRotatef(angle[3], 0, 1, 0);
-                    glRotatef(angle2[3], 1, 0, 0);
+                    glRotatef(angle2[3], 0, 0, 1);
                     glTranslatef( 0.57, -1.21, 0 );///glTranslatef(teapotX, teapotY, 0);
                     glmDraw(hand1, GLM_MATERIAL|GLM_TEXTURE);
                     glPopMatrix();
@@ -151,22 +146,21 @@ void display() {
             glPushMatrix();///右手
                 glTranslatef( 0.16, 1.23, 0 );
                 glRotatef(angle[4], 0, 1, 0);
-                glRotatef(angle2[4], 1, 0, 0);
+                glRotatef(angle2[4], 0, 0, 1);
                 glTranslatef( -0.16, -1.23, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(arm2, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();
                 glTranslatef( 0.32, 1.21, 0 );
                 glRotatef(angle[5], 0, 1, 0);
-                glRotatef(angle2[5], 1, 0, 0);
+                glRotatef(angle2[5], 0, 0, 1);
                 glTranslatef( -0.32, -1.21, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(arm22, GLM_MATERIAL|GLM_TEXTURE);
 
                 glPushMatrix();
                     glTranslatef( 0.56, 1.21, 0 );
                     glRotatef(angle[6], 0, 1, 0);
-                    glRotatef(angle2[6], 1, 0, 0);
-                    glRotatef(angle3[6], 0, 0, 1);
+                    glRotatef(angle2[6], 0, 0, 1);
                     glTranslatef( -0.56, -1.21, 0 );///glTranslatef(teapotX, teapotY, 0);
                     glmDraw(hand2, GLM_MATERIAL|GLM_TEXTURE);
                     glPopMatrix();
@@ -175,10 +169,10 @@ void display() {
 
             glPushMatrix();
             //glTranslatef(teapotX, teapotY, 0);
-                //glTranslatef(-0.00, +22.53, 0 );
-                //glRotatef(angle[7], 0, 1, 0);
-                //glRotatef(angle2[7], 1, 0, 0);
-                //glTranslatef( 0.00, -22.53, 0 );///glTranslatef(teapotX, teapotY, 0);
+                glTranslatef( 0.00, 1.33, 0 );
+                glRotatef(angle[7], 0, 1, 0);
+                glRotatef(angle2[7], 1, 0, 0);
+                glTranslatef( -0.00, -1.33, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(head, GLM_MATERIAL|GLM_TEXTURE);
             glPopMatrix();
 
@@ -240,8 +234,6 @@ void display() {
             glPopMatrix();
 
         glPopMatrix();
-
-
 
 
         glColor3f(0,1,0);
