@@ -110,6 +110,7 @@ void keyboard(unsigned char key, int x, int y) {
     }
     if(key=='p'){ ///play播放 也會動到檔案
         glutTimerFunc(0, timer, 0);
+        myMP3.Play();
     }
 }
 
