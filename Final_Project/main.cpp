@@ -315,7 +315,7 @@ void display() {
 
 
         ///glColor3f(0,1,0);
-        glutSolidTeapot( 0.02 );
+        //glutSolidTeapot( 0.02 );
 
     glPopMatrix();
     glutSwapBuffers();
