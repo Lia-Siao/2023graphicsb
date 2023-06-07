@@ -236,7 +236,7 @@ void display() {
             glBindTexture(GL_TEXTURE_2D , tex1);
                 glTranslatef( 0.00, 1.33, 0 );
                 glRotatef(angle[7], 0, 1, 0);
-                glRotatef(angle2[7], 0, 0, 1);
+                glRotatef(angle2[7], 1, 0, 0);
                 glTranslatef( -0.00, -1.33, 0 );///glTranslatef(teapotX, teapotY, 0);
                 glmDraw(head, GLM_SMOOTH|GLM_TEXTURE);
                 glPushMatrix();
